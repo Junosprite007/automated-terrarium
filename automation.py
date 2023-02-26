@@ -66,16 +66,18 @@ try:
       # print('The heater relay is currently: ' + heaterRelayStatusText)
       # print('The humidifier relay is currently: ' + humidifierRelayStatus)
 
-    time.sleep(1)
     print('The heater relay is currently: ' + heaterRelayStatusText)
     heaterRelayStatus = GPIO.HIGH
     GPIO.output(heaterRelayPin, heaterRelayStatus)
     heaterRelayStatusText = "HIGH"
     time.sleep(1)
+    printTimer += 1
+    
     print('The heater relay is currently: ' + heaterRelayStatusText)
     heaterRelayStatus = GPIO.LOW
     GPIO.output(heaterRelayPin, heaterRelayStatus)
     heaterRelayStatusText = "LOW"
+    time.sleep(1)
     printTimer += 1
 
 finally:

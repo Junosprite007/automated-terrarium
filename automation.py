@@ -8,11 +8,12 @@ pins.setmode(pins.BCM)
 temperatureSensorPin = 0
 humiditySensorPin = 0
 airQualitySensorPin = 0
-heaterRelayPin = 0
-heaterRelayStatus = pins.LOW
-humidifierRelayPin = 12
+humidifierRelayPin = 0
 humidifierRelayStatus = pins.LOW
 humidifierRelayStatusText = "pins.LOW"
+heaterRelayPin = 12
+heaterRelayStatus = pins.LOW
+heaterRelayStatusText = "pins.LOW"
 
 # Set important limits
 minTemp = 76     # in Fahrenheit
@@ -37,14 +38,14 @@ try:
     # airQualityReading = airQualitySensorPin.whatever
     
     # Handle the heater relay.
-    # if (temperatureReading < minTemp):
-    #   # Turn on the heater by activating the relay
-    #   heaterRelayStatus = pins.HIGH
-    #   pins.output(heaterRelayPin, heaterRelayStatus)
-    # elif (temperatureReading >= maxTemp - 1):
-    #   # Turn on the heater by activating the relay
-    #   heaterRelayStatus = pins.LOW
-    #   pins.output(heaterRelayPin, heaterRelayStatus)
+    if (temperatureReading < minTemp):
+      # Turn on the heater by activating the relay
+      heaterRelayStatus = pins.HIGH
+      pins.output(heaterRelayPin, heaterRelayStatus)
+    elif (temperatureReading >= maxTemp - 1):
+      # Turn on the heater by activating the relay
+      heaterRelayStatus = pins.LOW
+      pins.output(heaterRelayPin, heaterRelayStatus)
     
     # # Handle the humidifier relay.
     # if (humidityReading < minHumidity):
@@ -56,16 +57,24 @@ try:
     #   heaterRelayStatus = pins.LOW
     #   pins.output(heaterRelayPin, heaterRelayStatus)
 
-    if (printTimer % 600 == 0):
+    # if (printTimer % 600 == 0):
       # print('Temperature is: ' + temperatureReading)
       # print('Humidity is: ' + humidityReading)
       # print('Air quality is: ' + airQualityReading)
 
-      print('The heater relay is currently: ' + humidifierRelayStatusText)
+      # print('The heater relay is currently: ' + heaterRelayStatusText)
       # print('The humidifier relay is currently: ' + humidifierRelayStatus)
 
-
     time.sleep(1)
+    print('The heater relay is currently: ' + heaterRelayStatusText)
+    heaterRelayStatus = pins.HIGH
+    pins.output(heaterRelayPin, heaterRelayStatus)
+    heaterRelayStatusText = "pins.HIGH"
+    time.sleep(1)
+    print('The heater relay is currently: ' + heaterRelayStatusText)
+    heaterRelayStatus = pins.LOW
+    pins.output(heaterRelayPin, heaterRelayStatus)
+    heaterRelayStatusText = "pins.HIGH"
     printTimer += 1
 
 finally:

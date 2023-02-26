@@ -2,6 +2,9 @@
 
 ############### Setting up Raspberry Pi automation from within the Pi ###############
 
+# run from remote machine
+# cat automation.py | ssh pibay2 python -
+
 sudo apt -y update && sudo apt -y upgrade
 sudo apt -y install git
 
@@ -10,7 +13,7 @@ cd ~/
 mkdir apps
 cd apps
 
-# Quietly tranfer folder from other computer to the raspi, or clone from remote repo.
-# scp -rq ../automated-terrarium pibay2:~/apps/
+# clone repo
+git clone https://github.com/Junosprite007/automated-terrarium.git
 
 cd automated-terrarium

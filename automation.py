@@ -10,7 +10,7 @@ humiditySensorPin = 0
 airQualitySensorPin = 0
 heaterRelayPin = 0
 heaterRelayStatus = pins.LOW
-humidifierRelayPin = 0
+humidifierRelayPin = 12
 humidifierRelayStatus = pins.LOW
 
 # Set important limits
@@ -31,34 +31,34 @@ try:
   while True:
         
     # Get data
-    temperatureReading = temperatureSensorPin.whatever
-    humidityReading = humiditySensorPin.whatever
-    airQualityReading = airQualitySensorPin.whatever
+    # temperatureReading = temperatureSensorPin.whatever
+    # humidityReading = humiditySensorPin.whatever
+    # airQualityReading = airQualitySensorPin.whatever
     
     # Handle the heater relay.
-    if (temperatureReading < minTemp):
-      # Turn on the heater by activating the relay
-      heaterRelayStatus = pins.HIGH
-      pins.output(heaterRelayPin, heaterRelayStatus)
-    elif (temperatureReading >= maxTemp - 1):
-      # Turn on the heater by activating the relay
-      heaterRelayStatus = pins.LOW
-      pins.output(heaterRelayPin, heaterRelayStatus)
+    # if (temperatureReading < minTemp):
+    #   # Turn on the heater by activating the relay
+    #   heaterRelayStatus = pins.HIGH
+    #   pins.output(heaterRelayPin, heaterRelayStatus)
+    # elif (temperatureReading >= maxTemp - 1):
+    #   # Turn on the heater by activating the relay
+    #   heaterRelayStatus = pins.LOW
+    #   pins.output(heaterRelayPin, heaterRelayStatus)
     
-    # Handle the humidifier relay.
-    if (humidityReading < minHumidity):
-      # Turn on the heater by activating the relay
-      heaterRelayStatus = pins.HIGH
-      pins.output(heaterRelayPin, heaterRelayStatus)
-    elif (humidityReading >= maxHumidity - 1):
-      # Turn on the heater by activating the relay
-      heaterRelayStatus = pins.LOW
-      pins.output(heaterRelayPin, heaterRelayStatus)
+    # # Handle the humidifier relay.
+    # if (humidityReading < minHumidity):
+    #   # Turn on the heater by activating the relay
+    #   heaterRelayStatus = pins.HIGH
+    #   pins.output(heaterRelayPin, heaterRelayStatus)
+    # elif (humidityReading >= maxHumidity - 1):
+    #   # Turn on the heater by activating the relay
+    #   heaterRelayStatus = pins.LOW
+    #   pins.output(heaterRelayPin, heaterRelayStatus)
 
     if (printTimer % 600 == 0):
-      print('Temperature is: ' + temperatureReading)
-      print('Humidity is: ' + humidityReading)
-      print('Air quality is: ' + airQualityReading)
+      # print('Temperature is: ' + temperatureReading)
+      # print('Humidity is: ' + humidityReading)
+      # print('Air quality is: ' + airQualityReading)
 
       print('The heater relay is currently: ' + heaterRelayStatus)
       print('The humidifier relay is currently: ' + humidifierRelayStatus)

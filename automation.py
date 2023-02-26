@@ -1,19 +1,19 @@
-import RPi.GPIO as pins
+import RPi.GPIO as GPIO
 import time
 
-pins.setmode(pins.BCM)
+GPIO.setmode(GPIO.BCM)
 
 # Set pins
 # I may be able to automate this, too, by getting the data first, then assigning the pin to a sensor-type based on the date that's being received.
-temperatureSensorPin = 0
-humiditySensorPin = 0
-airQualitySensorPin = 0
-humidifierRelayPin = 0
-humidifierRelayStatus = pins.LOW
-humidifierRelayStatusText = "pins.LOW"
-heaterRelayPin = 12
-heaterRelayStatus = pins.LOW
-heaterRelayStatusText = "pins.LOW"
+# temperatureSensorPin = 0
+# humiditySensorPin = 0
+# airQualitySensorPin = 0
+# humidifierRelayPin = 0
+# humidifierRelayStatus = GPIO.LOW
+# humidifierRelayStatusText = "LOW"
+heaterRelayPin = 21
+heaterRelayStatus = GPIO.LOW
+heaterRelayStatusText = "LOW"
 
 # Set important limits
 minTemp = 76     # in Fahrenheit
@@ -22,11 +22,12 @@ minHumidity = 90     # in percentage
 maxHumidity = 95     # in percentage
 
 # How often do you want to record data to the backend (in seconds)?
-dataRecordingInterval = 600 #every 5 minutes, though, currently this does not necessarily correspond to 5 minutes.
+# every 5 minutes, though, currently this does not necessarily correspond to 5 minutes.
+dataRecordingInterval = 600
 
 # Relay
-pins.setup(heaterRelayPin, pins.OUT)
-pins.output(heaterRelayPin, heaterRelayStatus)
+GPIO.setup(heaterRelayPin, GPIO.OUT)
+GPIO.output(heaterRelayPin, heaterRelayStatus)
 
 try:
   printTimer = 0
@@ -40,22 +41,22 @@ try:
     # Handle the heater relay.
     # if (temperatureReading < minTemp):
     #   # Turn on the heater by activating the relay
-    #   heaterRelayStatus = pins.HIGH
-    #   pins.output(heaterRelayPin, heaterRelayStatus)
+    #   heaterRelayStatus = GPIO.HIGH
+    #   GPIO.output(heaterRelayPin, heaterRelayStatus)
     # elif (temperatureReading >= maxTemp - 1):
     #   # Turn on the heater by activating the relay
-    #   heaterRelayStatus = pins.LOW
-    #   pins.output(heaterRelayPin, heaterRelayStatus)
+    #   heaterRelayStatus = GPIO.LOW
+    #   GPIO.output(heaterRelayPin, heaterRelayStatus)
     
     # # Handle the humidifier relay.
     # if (humidityReading < minHumidity):
     #   # Turn on the heater by activating the relay
-    #   heaterRelayStatus = pins.HIGH
-    #   pins.output(heaterRelayPin, heaterRelayStatus)
+    #   heaterRelayStatus = GPIO.HIGH
+    #   GPIO.output(heaterRelayPin, heaterRelayStatus)
     # elif (humidityReading >= maxHumidity - 1):
     #   # Turn on the heater by activating the relay
-    #   heaterRelayStatus = pins.LOW
-    #   pins.output(heaterRelayPin, heaterRelayStatus)
+    #   heaterRelayStatus = GPIO.LOW
+    #   GPIO.output(heaterRelayPin, heaterRelayStatus)
 
     # if (printTimer % 600 == 0):
       # print('Temperature is: ' + temperatureReading)
@@ -67,16 +68,16 @@ try:
 
     time.sleep(1)
     print('The heater relay is currently: ' + heaterRelayStatusText)
-    heaterRelayStatus = pins.HIGH
-    pins.output(heaterRelayPin, heaterRelayStatus)
-    heaterRelayStatusText = "pins.HIGH"
+    heaterRelayStatus = GPIO.HIGH
+    GPIO.output(heaterRelayPin, heaterRelayStatus)
+    heaterRelayStatusText = "HIGH"
     time.sleep(1)
     print('The heater relay is currently: ' + heaterRelayStatusText)
-    heaterRelayStatus = pins.LOW
-    pins.output(heaterRelayPin, heaterRelayStatus)
-    heaterRelayStatusText = "pins.HIGH"
+    heaterRelayStatus = GPIO.LOW
+    GPIO.output(heaterRelayPin, heaterRelayStatus)
+    heaterRelayStatusText = "LOW"
     printTimer += 1
 
 finally:
   printTimer = 0
-  pins.cleanup()
+  GPIO.cleanup()

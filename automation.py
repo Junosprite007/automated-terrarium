@@ -38,14 +38,14 @@ try:
     # airQualityReading = airQualitySensorPin.whatever
     
     # Handle the heater relay.
-    if (temperatureReading < minTemp):
-      # Turn on the heater by activating the relay
-      heaterRelayStatus = pins.HIGH
-      pins.output(heaterRelayPin, heaterRelayStatus)
-    elif (temperatureReading >= maxTemp - 1):
-      # Turn on the heater by activating the relay
-      heaterRelayStatus = pins.LOW
-      pins.output(heaterRelayPin, heaterRelayStatus)
+    # if (temperatureReading < minTemp):
+    #   # Turn on the heater by activating the relay
+    #   heaterRelayStatus = pins.HIGH
+    #   pins.output(heaterRelayPin, heaterRelayStatus)
+    # elif (temperatureReading >= maxTemp - 1):
+    #   # Turn on the heater by activating the relay
+    #   heaterRelayStatus = pins.LOW
+    #   pins.output(heaterRelayPin, heaterRelayStatus)
     
     # # Handle the humidifier relay.
     # if (humidityReading < minHumidity):

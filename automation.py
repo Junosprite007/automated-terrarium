@@ -12,6 +12,7 @@ heaterRelayPin = 0
 heaterRelayStatus = pins.LOW
 humidifierRelayPin = 12
 humidifierRelayStatus = pins.LOW
+humidifierRelayStatusText = "pins.LOW"
 
 # Set important limits
 minTemp = 76     # in Fahrenheit
@@ -60,8 +61,8 @@ try:
       # print('Humidity is: ' + humidityReading)
       # print('Air quality is: ' + airQualityReading)
 
-      print('The heater relay is currently: ' + heaterRelayStatus)
-      print('The humidifier relay is currently: ' + humidifierRelayStatus)
+      print('The heater relay is currently: ' + humidifierRelayStatusText)
+      # print('The humidifier relay is currently: ' + humidifierRelayStatus)
 
 
     time.sleep(1)

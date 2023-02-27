@@ -6,7 +6,7 @@
 # cat automation.py | ssh pibay2 python -
 
 sudo apt -y update && sudo apt -y upgrade
-sudo apt -y install git
+sudo apt -y install git python3-dev python3-pip
 
 cd ~/
 
@@ -17,3 +17,6 @@ cd apps
 git clone https://github.com/Junosprite007/automated-terrarium.git
 
 cd automated-terrarium
+
+pip install Adafruit-DHT ISStreamer --upgrade pip setuptools wheel
+

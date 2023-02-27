@@ -10,7 +10,7 @@ while True:
     temperatureF = temperatureC * (9 / 5) + 32
 
     if humidity is not None and temperatureC is not None:
-        print("Temp={0:0.1f}*C  Humidity={1:0.1f}%".format(temperatureC, humidity))
+        print("Temp={0:0.1f}*C  Temp={1:0.1f}*F  Humidity={2:0.1f}%".format(temperatureC, temperatureF, humidity))
     else:
         print("Failed to retrieve data from humidity sensor")
     time.sleep(1)
